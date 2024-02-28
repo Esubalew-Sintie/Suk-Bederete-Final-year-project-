@@ -1,15 +1,15 @@
 import React from "react";
 
 // components
+import CardLineChart from "@/app/components/Cards/CardLineChart";
+import CardBarChart from "@/app/components/Cards/CardBarChart";
+import CardPageVisits from "@/app/components/Cards/CardPageVisits";
+import CardSocialTraffic from "@/app/components/Cards/CardSocialTraffic";
 
-import CardLineChart from "app/components/Cards/CardLineChart.js";
-import CardBarChart from "app/components/Cards/CardBarChart.js";
-import CardPageVisits from "app/components/Cards/CardPageVisits.js";
-import CardSocialTraffic from "app/components/Cards/CardSocialTraffic.js";
 
 // layout for page
 
-import Admin from "layouts/Admin.js";
+import Admin from "@/app/layouts/Admin";
 
 export default function Dashboard() {
   return (

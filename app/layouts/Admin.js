@@ -3,10 +3,10 @@ import React from "react";
 // components
 
 
-import AdminNavbar from "../app/components/Navbars/AdminNavbar"
-import Sidebar from "../app/components/Sidebar/Sidebar.js";
-import HeaderStats from "../app/components/Headers/HeaderStats.js";
-import FooterAdmin from "../app/components/Footers/FooterAdmin.js";
+import AdminNavbar from "@/app/components/Navbars/AdminNavbar"
+import Sidebar from "@/app/components/Sidebar/Sidebar.js";
+import HeaderStats from "@/app/components/Headers/HeaderStats.js";
+import FooterAdmin from "@/app/components/Footers/FooterAdmin.js";
 
 export default function Admin({ children }) {
   return (

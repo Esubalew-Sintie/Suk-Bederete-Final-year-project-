@@ -1,8 +1,9 @@
 import {useState} from "react";
 import {DndContext, useDroppable} from "@dnd-kit/core";
 import {SortableContext} from "@dnd-kit/sortable";
+import DragAndDropList from "./SortableItem";
 
-const DroppableContainer = ({containerItem}) => {
+const DroppableContainer = ({containerItem,seContainerItem}) => {
 	const {setNodeRef, isOver} = useDroppable({
 		id: "droppable",
 		data: {
@@ -27,31 +28,12 @@ const DroppableContainer = ({containerItem}) => {
 		>
 			<h2>Droppable Container</h2>
 			<div className=" flex flex-col gap-5">
-				{containerItem.map((item) => (
+				{/* {containerItem.map((item) => (
 					<button className=" bg-black mt-2 text-white">{item}</button>
-				))}
+				))} */}
+        <DragAndDropList containerItem={containerItem} seContainerItem={seContainerItem} />
 			</div>
 		</div>
 	);
 };
 export default DroppableContainer;
-
-// import { useDroppable } from "@dnd-kit/core";
-
-// const CartDroppable = (props) => {
-//   const { setNodeRef } = useDroppable({
-//     id: "cart-droppable"
-//   });
-
-//   return (
-//     <ul className='cart' ref={setNodeRef}>
-//       {props.items.map((item, idx) => (
-//         <div key={`${item}-${idx}`} className="cart-item">
-//           {item}
-//         </div>
-//       ))}
-//     </ul>
-//   );
-// };
-
-// export default CartDroppable;

@@ -12,7 +12,7 @@ export const metadata = {
 
 export default function RootLayout({children}) {
 	return (
-		<html lang="en">
+		<html lang="en" suppressHydrationWarning={true}>
 			<body className={inter.className}>
 				<div className=" flex flex-col w-full min-h-screen">
 					<div id="page-transition"></div>

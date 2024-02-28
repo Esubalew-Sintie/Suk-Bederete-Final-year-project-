@@ -14,7 +14,9 @@ function Theme({theme}) {
 					</Link>
 					<p>By Suk Bederete</p>
 				</div>
-				<button className=" bg-green-600 px-4  rounded-md border">Add </button>
+				<button className=" bg-black text-white w-16 h-3 rounded-md border">
+					Add{" "}
+				</button>
 			</div>
 		</div>
 	);

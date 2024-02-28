@@ -28,29 +28,3 @@ function LeftSidebar({dr}) {
 }
 
 export default LeftSidebar;
-
-// import { useDraggable } from "@dnd-kit/core";
-// import { CSS } from "@dnd-kit/utilities";
-
-
-
-// const FruitDraggable = (props) => {
-//   const { attributes, listeners, setNodeRef, transform } = useDraggable({
-//     id: props.children,
-//     data: { title: props.children }
-//   });
-
-//   return (
-//     <div
-//       ref={setNodeRef}
-//       className="fruit-item"
-//       style={{ transform: CSS.Translate.toString(transform) }}
-//       {...attributes}
-//       {...listeners}
-//     >
-//       {props.children}
-//     </div>
-//   );
-// };
-
-// export default FruitDraggable;
