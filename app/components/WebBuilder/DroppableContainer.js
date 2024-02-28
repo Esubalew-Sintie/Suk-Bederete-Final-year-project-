@@ -3,7 +3,7 @@ import {DndContext, useDroppable} from "@dnd-kit/core";
 import {SortableContext} from "@dnd-kit/sortable";
 import DragAndDropList from "./SortableItem";
 
-const DroppableContainer = ({containerItem,seContainerItem}) => {
+const DroppableContainer = ({containerItem,setContainerItem}) => {
 	const {setNodeRef, isOver} = useDroppable({
 		id: "droppable",
 		data: {
@@ -31,7 +31,7 @@ const DroppableContainer = ({containerItem,seContainerItem}) => {
 				{/* {containerItem.map((item) => (
 					<button className=" bg-black mt-2 text-white">{item}</button>
 				))} */}
-        <DragAndDropList containerItem={containerItem} seContainerItem={seContainerItem} />
+        <DragAndDropList containerItem={containerItem} setContainerItem={setContainerItem} />
 			</div>
 		</div>
 	);
