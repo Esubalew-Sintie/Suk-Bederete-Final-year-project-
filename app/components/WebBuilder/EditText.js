@@ -67,9 +67,9 @@ function EditText() {
                 type="number"
                 placeholder="Text Size"
                 name="textSize"
-                value={16}
+                defaultValue={16}
                 id="textSize"
-                className=" w-16 text-black h-3"
+                className=" w-16 text-black h-8"
             />{" "}
         </div>
         <label htmlFor="color">

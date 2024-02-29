@@ -3,7 +3,7 @@ import Style from "./RightSidbar.module.css";
 import EditImage from "./EditImage";
 import EditText from "./EditText";
 function RightSidebar() {
-    const [isText,setText]=useState(false)
+    const [isText,setText]=useState(true)
 	return (
 		<div className={Style.container}>
             {

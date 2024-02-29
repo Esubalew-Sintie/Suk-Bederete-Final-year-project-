@@ -1,3 +1,4 @@
+"use client";
 import {SortableContext, arrayMove, useSortable} from "@dnd-kit/sortable";
 import {
 	DndContext,
@@ -84,7 +85,11 @@ const DragAndDropList = ({containerItem, setContainerItem}) => {
 		})
 	);
 	return (
-		<DndContext sensors={sensors} onDragStart={dragStart} onDragEnd={handleDragEnd}>
+		<DndContext
+			sensors={sensors}
+			onDragStart={dragStart}
+			onDragEnd={handleDragEnd}
+		>
 			<SortableContext items={containerItem}>
 				<div>
 					{containerItem.map((item, index) => (
@@ -94,12 +99,12 @@ const DragAndDropList = ({containerItem, setContainerItem}) => {
 					))}
 				</div>
 			</SortableContext>
-			{createPortal(
+			{/* {createPortal( */}
 				<DragOverlay>
 					{activeData && <Item id={activeData}>{activeData}</Item>}
 				</DragOverlay>,
-				document.body
-			)}
+				{/*  document.body
+			)} */}
 		</DndContext>
 	);
 };
