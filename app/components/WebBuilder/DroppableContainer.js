@@ -16,9 +16,7 @@ const DroppableContainer = ({containerItem,setContainerItem}) => {
 		minHeight: "200px",
 		padding: "16px",
 	};
-	const onDragEnd = (e) => {
-		console.log(e);
-	};
+	
 
 	return (
 		<div
