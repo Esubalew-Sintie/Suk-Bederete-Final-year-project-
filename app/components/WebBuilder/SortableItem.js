@@ -9,53 +9,47 @@ import {
 } from "@dnd-kit/core";
 import {useState} from "react";
 import {createPortal} from "react-dom";
+import Card from "./Card";
+import Button from "./Button";
+import { CSS } from "@dnd-kit/utilities";
 
 const Item = ({id, children}) => {
 	const {isDragging, attributes, listeners, setNodeRef, transform, transition} =
-		useSortable({id});
+		useSortable({
+			id,
+			data: children,
+		});
+		const style = {
+			transform:CSS.Transform.toString(transform),
+			transition,
+			cursor: "grab",
+			borderRadius: "4px",
+			margin: "4px",
+		  };
 	if (isDragging)
 		return (
 			<div
 				ref={setNodeRef}
-				style={{
-					transform: transform
-						? `translate3d(${transform.x}px, ${transform.y}px, 0)`
-						: undefined,
-					transition,
-					cursor: "grab",
-					padding: "8px",
-					border: "1px solid #ccc",
-					borderRadius: "4px",
-					margin: "4px",
-					height: "200px",
-					width: "100%",
-				}}
-				className=" border border-red-400 w-[200px] "
+				style={style}
+				className=" border border-red-400  "
 			>
-				{children}
+				{children.type == "card" && <Card id={children.id} text={children} />}
+				{children.type == "button" && <Button id={children.id} text={children} />}{" "}
 			</div>
 		);
+	
+		
 
 	return (
 		<div
 			{...attributes}
 			{...listeners}
 			ref={setNodeRef}
-			style={{
-				transform: transform
-					? `translate3d(${transform.x}px, ${transform.y}px, 0)`
-					: undefined,
-				transition,
-				cursor: "grab",
-				padding: "8px",
-				border: "1px solid #ccc",
-				borderRadius: "4px",
-				margin: "4px",
-				height: "200px",
-			}}
+			style={style}
+
 		>
-			{children}
-		</div>
+                   {children.type == "card" && <Card id={children.id} text={children} />}
+				{children.type == "button" && <Button id={children.id} text={children} />}{" "}		</div>
 	);
 };
 
@@ -74,7 +68,6 @@ const DragAndDropList = ({containerItem, setContainerItem}) => {
 	}
 	const [activeData, setActiveData] = useState(null);
 	const dragStart = (e) => {
-		console.log(e.active.id);
 		setActiveData(e.active.id);
 	};
 	const sensors = useSensors(
@@ -93,17 +86,18 @@ const DragAndDropList = ({containerItem, setContainerItem}) => {
 			<SortableContext items={containerItem}>
 				<div>
 					{containerItem.map((item, index) => (
-						<Item key={item} id={item}>
+						<Item key={item.id} id={item.id}>
 							{item}
 						</Item>
 					))}
 				</div>
 			</SortableContext>
 			{/* {createPortal( */}
-				<DragOverlay>
-					{activeData && <Item id={activeData}>{activeData}</Item>}
-				</DragOverlay>,
-				{/*  document.body
+			<DragOverlay>
+				{activeData && <Item id={activeData.id}>{activeData}</Item>}
+			</DragOverlay>
+			,
+			{/*  document.body
 			)} */}
 		</DndContext>
 	);

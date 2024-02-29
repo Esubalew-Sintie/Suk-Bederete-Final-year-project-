@@ -1,40 +1,53 @@
 "use client";
 import {useState} from "react";
-import {DndContext} from "@dnd-kit/core";
-import DraggableItem from "../components/WebBuilder/DraggableItem";
+import {DndContext, PointerSensor, useSensor, useSensors} from "@dnd-kit/core";
+import {draggableElement as dragEle} from "../../util/constant";
 import DroppableContainer from "../components/WebBuilder/DroppableContainer";
 import LeftSidebar from "../components/WebBuilder/LeftSidebar";
 import RightSidebar from "../components/WebBuilder/RightSidebar";
 const WebBuilder = () => {
-	const [draggableElement, setDraggrableElement] = useState([
-		"button",
-		"Image",
-		"Card",
-		"TextField",
+	const [draggableElement, setDraggrableElement] = useState(dragEle);
+	const [containerItem, setContainerItem] = useState([
+		{
+			id: "1",
+			type: "card",
+			text: "Container",
+			bg: "/pro5.jpg",
+			position: {x: 0, y: 0},
+		},
 	]);
-	const [containerItem, setContainerItem] = useState(["button"]);
 	const addToContiner = (e) => {
 		// console.log(e.active);
 		const newItem = e.active.data?.current?.dr;
-		if (e.over?.id !== "droppable" || !newItem) return;
+		console.log(newItem);
+		if (e.over?.id !== "droppable" || !newItem.id) return;
 		const temp = [...containerItem];
 		temp.push(newItem);
 		setContainerItem(temp);
 	};
+	const sensors = useSensors(
+		useSensor(PointerSensor, {
+			activationConstraint: {
+				distance: 60,
+			},
+		})
+	);
 	return (
-		<DndContext onDragEnd={addToContiner}>
-			<div className=" flex w-screen bg-black h-full ">
+		<DndContext sensors={sensors} onDragEnd={addToContiner}>
+			<div className=" flex w-screen bg-blueGray-800 h-full ">
 				<div className="w-1/4 flex gap-5 flex-col   ">
 					{draggableElement.map((dr) => (
-						<LeftSidebar key={dr} dr={dr} />
+						<LeftSidebar key={dr.id} dr={dr} />
 					))}
 				</div>
 				<div className=" w-full ">
-					<DroppableContainer setContainerItem={setContainerItem} containerItem={containerItem} />
+					<DroppableContainer
+						setContainerItem={setContainerItem}
+						containerItem={containerItem}
+					/>
 				</div>
 				<div className=" w-1/4 justify-end ">
-          <RightSidebar />
-           
+					<RightSidebar />
 				</div>
 			</div>
 		</DndContext>

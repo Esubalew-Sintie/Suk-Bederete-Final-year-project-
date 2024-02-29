@@ -4,11 +4,11 @@ function Padding() {
 	return (
 		<>
 			<h3>Padding in (px)</h3>
-			<div className=" flex text-black gap-2">
+			<div className=" flex  gap-2">
 				<div>
 					<input
 						type="number"
-						className=" w-16"
+						className=" w-16 text-black"
 						name="margin"
 						defaultValue={0}
 						id="margin"
@@ -19,7 +19,7 @@ function Padding() {
 					<input
 						type="number"
 						defaultValue={0}
-						className=" w-16"
+						className=" w-16 text-black"
 						name="margin"
 						id="margin"
 					/>
@@ -29,7 +29,7 @@ function Padding() {
 					<input
 						type="number"
 						defaultValue={0}
-						className=" w-16"
+						className=" w-16 text-black"
 						name="margin"
 						id="margin"
 					/>
@@ -39,7 +39,7 @@ function Padding() {
 					<input
 						type="number"
 						defaultValue={0}
-						className=" w-16"
+						className=" w-16 text-black"
 						name="margin"
 						id="margin"
 					/>
